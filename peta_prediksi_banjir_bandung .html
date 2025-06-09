@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_48c4bf12a4ca8c4e432f966bee907e8f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    width: 170px;
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border:2px solid #444;
+    z-index:9999;
+    font-size:14px;
+    padding:10px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+">
+<b>Legenda Risiko Banjir</b><br>
+<i style="background:green;width:12px;height:12px;display:inline-block;"></i>&nbsp;Rendah<br>
+<i style="background:orange;width:12px;height:12px;display:inline-block;"></i>&nbsp;Sedang<br>
+<i style="background:red;width:12px;height:12px;display:inline-block;"></i>&nbsp;Tinggi<br>
+</div>
+    
+            <div class="folium-map" id="map_48c4bf12a4ca8c4e432f966bee907e8f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_48c4bf12a4ca8c4e432f966bee907e8f = L.map(
+                "map_48c4bf12a4ca8c4e432f966bee907e8f",
+                {
+                    center: [-6.9, 107.6],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0ec697109c9e4a659c1949404c4aca98 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0ec697109c9e4a659c1949404c4aca98.addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var rectangle_317fc856a6f18298bbcb62ad28df9f8a = L.rectangle(
+                [[-6.9171, 107.5693], [-6.9091000000000005, 107.57730000000001]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_39165708726a4a0b94ad84d63f30f8d0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_94956fdd11e476ade65f3c3d621d7ee8 = $(`<div id="html_94956fdd11e476ade65f3c3d621d7ee8" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Andir<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 267.36 mm<br>             <b>Jumlah Banjir:</b> 2.58             </div>`)[0];
+                popup_39165708726a4a0b94ad84d63f30f8d0.setContent(html_94956fdd11e476ade65f3c3d621d7ee8);
+            
+        
+
+        rectangle_317fc856a6f18298bbcb62ad28df9f8a.bindPopup(popup_39165708726a4a0b94ad84d63f30f8d0)
+        ;
+
+        
+    
+    
+            var marker_f33a99f2a920ed88f2d27a9bbdede16e = L.marker(
+                [-6.9131, 107.5733],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_2acdfb038010833cb6e19b4a8569fc68 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eAndir\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f33a99f2a920ed88f2d27a9bbdede16e.setIcon(div_icon_2acdfb038010833cb6e19b4a8569fc68);
+            
+    
+            var rectangle_aab8c68509472266517759164a6cadf9 = L.rectangle(
+                [[-6.9041999999999994, 107.6433], [-6.8962, 107.6513]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_f3f2ed217ab5f877a6002ff9c48fc0d9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_134b47ffbf260449642a6819d71d6b46 = $(`<div id="html_134b47ffbf260449642a6819d71d6b46" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Antapani<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 269.38 mm<br>             <b>Jumlah Banjir:</b> 3.87             </div>`)[0];
+                popup_f3f2ed217ab5f877a6002ff9c48fc0d9.setContent(html_134b47ffbf260449642a6819d71d6b46);
+            
+        
+
+        rectangle_aab8c68509472266517759164a6cadf9.bindPopup(popup_f3f2ed217ab5f877a6002ff9c48fc0d9)
+        ;
+
+        
+    
+    
+            var marker_e93e2c5911c5826b022bc1110722a1b6 = L.marker(
+                [-6.9002, 107.6473],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_c377901c20fe502db336ce13ae05babf = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eAntapani\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_e93e2c5911c5826b022bc1110722a1b6.setIcon(div_icon_c377901c20fe502db336ce13ae05babf);
+            
+    
+            var rectangle_0e25bed56f9e0d9ee695e3105485fc5b = L.rectangle(
+                [[-6.9029, 107.675], [-6.894900000000001, 107.683]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_02274ff96af4446a04142c4ce568441c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b3ac5269e8e5a4ec7e09b6cdb339a7e9 = $(`<div id="html_b3ac5269e8e5a4ec7e09b6cdb339a7e9" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Arcamanik<br>             <b>Prediksi:</b> Sedang<br>             <b>Curah Hujan:</b> 433.35 mm<br>             <b>Jumlah Banjir:</b> 2.81             </div>`)[0];
+                popup_02274ff96af4446a04142c4ce568441c.setContent(html_b3ac5269e8e5a4ec7e09b6cdb339a7e9);
+            
+        
+
+        rectangle_0e25bed56f9e0d9ee695e3105485fc5b.bindPopup(popup_02274ff96af4446a04142c4ce568441c)
+        ;
+
+        
+    
+    
+            var marker_54f68bc147ed7e8b382d51c623a71a50 = L.marker(
+                [-6.8989, 107.679],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_977844ae47404cc2405dda5fc2729357 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eArcamanik\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_54f68bc147ed7e8b382d51c623a71a50.setIcon(div_icon_977844ae47404cc2405dda5fc2729357);
+            
+    
+            var rectangle_70e30629bc0865c347c8ff6f3bd7f7ff = L.rectangle(
+                [[-6.930599999999999, 107.5957], [-6.9226, 107.6037]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_05bd4b6499b6e4cb5e840443deb10ce5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e58cfd347c466a676f207d2165d3c797 = $(`<div id="html_e58cfd347c466a676f207d2165d3c797" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Astanaanyar<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 380.88 mm<br>             <b>Jumlah Banjir:</b> 2.76             </div>`)[0];
+                popup_05bd4b6499b6e4cb5e840443deb10ce5.setContent(html_e58cfd347c466a676f207d2165d3c797);
+            
+        
+
+        rectangle_70e30629bc0865c347c8ff6f3bd7f7ff.bindPopup(popup_05bd4b6499b6e4cb5e840443deb10ce5)
+        ;
+
+        
+    
+    
+            var marker_c4e2336ec57ef868ad7b9bd40b1e590a = L.marker(
+                [-6.9266, 107.5997],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_108eb440bfd2035bc12592b871f58608 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eAstanaanyar\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_c4e2336ec57ef868ad7b9bd40b1e590a.setIcon(div_icon_108eb440bfd2035bc12592b871f58608);
+            
+    
+            var rectangle_6c9805773334c95165a9054eef7536a2 = L.rectangle(
+                [[-6.9395, 107.57369999999999], [-6.931500000000001, 107.5817]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_13fe63c3e4a148f2138c54dedf1be4cd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0f17f33487ddf029ac0cfb12b51ca1e1 = $(`<div id="html_0f17f33487ddf029ac0cfb12b51ca1e1" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Babakan Ciparay<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 344.3 mm<br>             <b>Jumlah Banjir:</b> 0.57             </div>`)[0];
+                popup_13fe63c3e4a148f2138c54dedf1be4cd.setContent(html_0f17f33487ddf029ac0cfb12b51ca1e1);
+            
+        
+
+        rectangle_6c9805773334c95165a9054eef7536a2.bindPopup(popup_13fe63c3e4a148f2138c54dedf1be4cd)
+        ;
+
+        
+    
+    
+            var marker_a6216bc0f59212d2b8795e5d06961bb7 = L.marker(
+                [-6.9355, 107.5777],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_a2032a74d1e5f0457c7a089c4aa656e7 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eBabakan Ciparay\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_a6216bc0f59212d2b8795e5d06961bb7.setIcon(div_icon_a2032a74d1e5f0457c7a089c4aa656e7);
+            
+    
+            var rectangle_f375532f94cfbed37dbf3f55a8fd1bfe = L.rectangle(
+                [[-6.962, 107.6334], [-6.954000000000001, 107.6414]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_a82fe3eb7e86a6e736f2b0bc98818f1c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5eb4db167a96ced6e9fb03f544873449 = $(`<div id="html_5eb4db167a96ced6e9fb03f544873449" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Bandung Kidul<br>             <b>Prediksi:</b> Sedang<br>             <b>Curah Hujan:</b> 361.93 mm<br>             <b>Jumlah Banjir:</b> 0.63             </div>`)[0];
+                popup_a82fe3eb7e86a6e736f2b0bc98818f1c.setContent(html_5eb4db167a96ced6e9fb03f544873449);
+            
+        
+
+        rectangle_f375532f94cfbed37dbf3f55a8fd1bfe.bindPopup(popup_a82fe3eb7e86a6e736f2b0bc98818f1c)
+        ;
+
+        
+    
+    
+            var marker_afe2fd467e458b7afed629748c8c0501 = L.marker(
+                [-6.958, 107.6374],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_49afadab6ff0cd633c701db16acc5487 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eBandung Kidul\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_afe2fd467e458b7afed629748c8c0501.setIcon(div_icon_49afadab6ff0cd633c701db16acc5487);
+            
+    
+            var rectangle_faab0d41637fa4bac54ac8245616f251 = L.rectangle(
+                [[-6.9315, 107.55799999999999], [-6.923500000000001, 107.566]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_d43ca302c1d1a4f832bbff7d60a08c5f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d247ffc130a12f3717204650863b45b9 = $(`<div id="html_d247ffc130a12f3717204650863b45b9" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Bandung Kulon<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 207.32 mm<br>             <b>Jumlah Banjir:</b> 2.65             </div>`)[0];
+                popup_d43ca302c1d1a4f832bbff7d60a08c5f.setContent(html_d247ffc130a12f3717204650863b45b9);
+            
+        
+
+        rectangle_faab0d41637fa4bac54ac8245616f251.bindPopup(popup_d43ca302c1d1a4f832bbff7d60a08c5f)
+        ;
+
+        
+    
+    
+            var marker_646f5450c2576b5fc9e1302cfcfbf10e = L.marker(
+                [-6.9275, 107.562],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_fdd41040366d5a5c15f7575c6cc2e5a2 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eBandung Kulon\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_646f5450c2576b5fc9e1302cfcfbf10e.setIcon(div_icon_fdd41040366d5a5c15f7575c6cc2e5a2);
+            
+    
+            var rectangle_d6cd8c362d8720df5ea591198405d172 = L.rectangle(
+                [[-6.906, 107.61569999999999], [-6.898000000000001, 107.6237]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_aebe65bbb754293e4472eafa3cb49d49 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f8d7acbca210b40b44670ee304ed112c = $(`<div id="html_f8d7acbca210b40b44670ee304ed112c" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Bandung Wetan<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 354.53 mm<br>             <b>Jumlah Banjir:</b> 1.34             </div>`)[0];
+                popup_aebe65bbb754293e4472eafa3cb49d49.setContent(html_f8d7acbca210b40b44670ee304ed112c);
+            
+        
+
+        rectangle_d6cd8c362d8720df5ea591198405d172.bindPopup(popup_aebe65bbb754293e4472eafa3cb49d49)
+        ;
+
+        
+    
+    
+            var marker_ea6d0bc7c9c3be067afc6e6442b88767 = L.marker(
+                [-6.902, 107.6197],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_cfcfd3d8ad0c3ce3ac16800829f325c4 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eBandung Wetan\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_ea6d0bc7c9c3be067afc6e6442b88767.setIcon(div_icon_cfcfd3d8ad0c3ce3ac16800829f325c4);
+            
+    
+            var rectangle_0c86853c4000742d317cf6fe8f6ad0df = L.rectangle(
+                [[-6.9376999999999995, 107.6287], [-6.9297, 107.6367]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_c6eaa3493c2458a07cfeaa6ea69e06e7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_33d82a15d74daa64917c75a6363c814d = $(`<div id="html_33d82a15d74daa64917c75a6363c814d" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Batununggal<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 327.38 mm<br>             <b>Jumlah Banjir:</b> 0.11             </div>`)[0];
+                popup_c6eaa3493c2458a07cfeaa6ea69e06e7.setContent(html_33d82a15d74daa64917c75a6363c814d);
+            
+        
+
+        rectangle_0c86853c4000742d317cf6fe8f6ad0df.bindPopup(popup_c6eaa3493c2458a07cfeaa6ea69e06e7)
+        ;
+
+        
+    
+    
+            var marker_351f5b4a1c90eb0e67f2d95d9bdf60bc = L.marker(
+                [-6.9337, 107.6327],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_29ebbba5d0e6cbb07a94ff6df96879e9 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eBatununggal\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_351f5b4a1c90eb0e67f2d95d9bdf60bc.setIcon(div_icon_29ebbba5d0e6cbb07a94ff6df96879e9);
+            
+    
+            var rectangle_f02750d257d470e039f6cb92d003fa94 = L.rectangle(
+                [[-6.9472, 107.5744], [-6.9392000000000005, 107.5824]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_7a6ad57cdb022e63ed42e68ab211a4fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a1f5eff5cdc7fce3a5762516d1180bcc = $(`<div id="html_a1f5eff5cdc7fce3a5762516d1180bcc" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Bojongloa Kaler<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 336.44 mm<br>             <b>Jumlah Banjir:</b> 3.61             </div>`)[0];
+                popup_7a6ad57cdb022e63ed42e68ab211a4fa.setContent(html_a1f5eff5cdc7fce3a5762516d1180bcc);
+            
+        
+
+        rectangle_f02750d257d470e039f6cb92d003fa94.bindPopup(popup_7a6ad57cdb022e63ed42e68ab211a4fa)
+        ;
+
+        
+    
+    
+            var marker_7499a395128651a7b9dde324ae0fab65 = L.marker(
+                [-6.9432, 107.5784],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_b3943abe2968aa4a362c24e93d9a802e = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eBojongloa Kaler\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_7499a395128651a7b9dde324ae0fab65.setIcon(div_icon_b3943abe2968aa4a362c24e93d9a802e);
+            
+    
+            var rectangle_7cd07f12682b7d1eff809f591ad249e9 = L.rectangle(
+                [[-6.9524, 107.5987], [-6.944400000000001, 107.6067]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_9bd2b3654e8d0e040cee3b2142abc84d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_33a3b3a24f4281ce1a417318f91d688c = $(`<div id="html_33a3b3a24f4281ce1a417318f91d688c" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Bojongloa Kidul<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 289.86 mm<br>             <b>Jumlah Banjir:</b> 0.16             </div>`)[0];
+                popup_9bd2b3654e8d0e040cee3b2142abc84d.setContent(html_33a3b3a24f4281ce1a417318f91d688c);
+            
+        
+
+        rectangle_7cd07f12682b7d1eff809f591ad249e9.bindPopup(popup_9bd2b3654e8d0e040cee3b2142abc84d)
+        ;
+
+        
+    
+    
+            var marker_5cb4a095a6107a0af3e8380bb6d1cfbf = L.marker(
+                [-6.9484, 107.6027],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_a935a11df273b04e7757c8f862ecce6d = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eBojongloa Kidul\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_5cb4a095a6107a0af3e8380bb6d1cfbf.setIcon(div_icon_a935a11df273b04e7757c8f862ecce6d);
+            
+    
+            var rectangle_74a4fd9f705c7220c1f0ec726bc496b5 = L.rectangle(
+                [[-6.951499999999999, 107.64269999999999], [-6.9435, 107.6507]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_946e3ef097bd974a1ce0eabc8bb88ca8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9d484dacbd39de70a4f07179300eeaf8 = $(`<div id="html_9d484dacbd39de70a4f07179300eeaf8" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Buahbatu<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 220.37 mm<br>             <b>Jumlah Banjir:</b> 2.98             </div>`)[0];
+                popup_946e3ef097bd974a1ce0eabc8bb88ca8.setContent(html_9d484dacbd39de70a4f07179300eeaf8);
+            
+        
+
+        rectangle_74a4fd9f705c7220c1f0ec726bc496b5.bindPopup(popup_946e3ef097bd974a1ce0eabc8bb88ca8)
+        ;
+
+        
+    
+    
+            var marker_245144d38b9a1e681d097e0ce52a8ba6 = L.marker(
+                [-6.9475, 107.6467],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_1a9fa039da879a256578584583cf3c87 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eBuahbatu\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_245144d38b9a1e681d097e0ce52a8ba6.setIcon(div_icon_1a9fa039da879a256578584583cf3c87);
+            
+    
+            var rectangle_29b46d479ec2448dc7fbfe1196a91558 = L.rectangle(
+                [[-6.8919, 107.62339999999999], [-6.883900000000001, 107.6314]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_4f9c98421751e8b96385a4cf1e42a066 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_30e757f2eabe0b4196e150a110d27803 = $(`<div id="html_30e757f2eabe0b4196e150a110d27803" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Cibeunying Kaler<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 248.33 mm<br>             <b>Jumlah Banjir:</b> 2.7             </div>`)[0];
+                popup_4f9c98421751e8b96385a4cf1e42a066.setContent(html_30e757f2eabe0b4196e150a110d27803);
+            
+        
+
+        rectangle_29b46d479ec2448dc7fbfe1196a91558.bindPopup(popup_4f9c98421751e8b96385a4cf1e42a066)
+        ;
+
+        
+    
+    
+            var marker_024d251e41a439f1a35104f5a01c2dd7 = L.marker(
+                [-6.8879, 107.6274],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_5ef5a36eaed142f6f4a6c17f5e9eef7c = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eCibeunying Kaler\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_024d251e41a439f1a35104f5a01c2dd7.setIcon(div_icon_5ef5a36eaed142f6f4a6c17f5e9eef7c);
+            
+    
+            var rectangle_99e330d32572471561d92ed23c709496 = L.rectangle(
+                [[-6.9064, 107.6402], [-6.8984000000000005, 107.6482]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_1b7676544f7046b6920ded3df1bcc8cd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_763a3ee452a93cd3e9b6f5b93a622b0f = $(`<div id="html_763a3ee452a93cd3e9b6f5b93a622b0f" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Cibeunying Kidul<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 437.69 mm<br>             <b>Jumlah Banjir:</b> 4.84             </div>`)[0];
+                popup_1b7676544f7046b6920ded3df1bcc8cd.setContent(html_763a3ee452a93cd3e9b6f5b93a622b0f);
+            
+        
+
+        rectangle_99e330d32572471561d92ed23c709496.bindPopup(popup_1b7676544f7046b6920ded3df1bcc8cd)
+        ;
+
+        
+    
+    
+            var marker_46014b44e665c33fb4f774022d63ba57 = L.marker(
+                [-6.9024, 107.6442],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_e74fc1428fee8ae0d6dc7b62486c7eab = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eCibeunying Kidul\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_46014b44e665c33fb4f774022d63ba57.setIcon(div_icon_e74fc1428fee8ae0d6dc7b62486c7eab);
+            
+    
+            var rectangle_60515ffe069d25ec3f2512b880e5fb11 = L.rectangle(
+                [[-6.890499999999999, 107.7123], [-6.8825, 107.72030000000001]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_995759e07247792c3115247631088637 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_676847892b25f2726a96da52f611e146 = $(`<div id="html_676847892b25f2726a96da52f611e146" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Cibiru<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 302.17 mm<br>             <b>Jumlah Banjir:</b> 2.42             </div>`)[0];
+                popup_995759e07247792c3115247631088637.setContent(html_676847892b25f2726a96da52f611e146);
+            
+        
+
+        rectangle_60515ffe069d25ec3f2512b880e5fb11.bindPopup(popup_995759e07247792c3115247631088637)
+        ;
+
+        
+    
+    
+            var marker_161c312f0a236441a1720bee3480d22e = L.marker(
+                [-6.8865, 107.7163],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_882a6034134c527633d7fe1db91d9660 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eCibiru\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_161c312f0a236441a1720bee3480d22e.setIcon(div_icon_882a6034134c527633d7fe1db91d9660);
+            
+    
+            var rectangle_b8bc4b2d9afe5725673205e78fc8bea1 = L.rectangle(
+                [[-6.9041, 107.59179999999999], [-6.896100000000001, 107.5998]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_280805d02fb4ca82747b94c6af10dd60 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_39c644bf06d7552d1277f9cc9cf91187 = $(`<div id="html_39c644bf06d7552d1277f9cc9cf91187" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Cicendo<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 316.67 mm<br>             <b>Jumlah Banjir:</b> 0.32             </div>`)[0];
+                popup_280805d02fb4ca82747b94c6af10dd60.setContent(html_39c644bf06d7552d1277f9cc9cf91187);
+            
+        
+
+        rectangle_b8bc4b2d9afe5725673205e78fc8bea1.bindPopup(popup_280805d02fb4ca82747b94c6af10dd60)
+        ;
+
+        
+    
+    
+            var marker_ebccdb6681269751f1f722acaa07b6f3 = L.marker(
+                [-6.9001, 107.5958],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_fdd78865f15e667dae9d665b12dd8b54 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eCicendo\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_ebccdb6681269751f1f722acaa07b6f3.setIcon(div_icon_fdd78865f15e667dae9d665b12dd8b54);
+            
+    
+            var rectangle_358eaf889f5159e31d2f93dd9d69621c = L.rectangle(
+                [[-6.8625, 107.59609999999999], [-6.854500000000001, 107.6041]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_4ca9750bc22f34d7841a7447a82ad3e6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e67348a35ff5f6d293a2a26e05ce102b = $(`<div id="html_e67348a35ff5f6d293a2a26e05ce102b" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Cidadap<br>             <b>Prediksi:</b> Sedang<br>             <b>Curah Hujan:</b> 213.18 mm<br>             <b>Jumlah Banjir:</b> 2.76             </div>`)[0];
+                popup_4ca9750bc22f34d7841a7447a82ad3e6.setContent(html_e67348a35ff5f6d293a2a26e05ce102b);
+            
+        
+
+        rectangle_358eaf889f5159e31d2f93dd9d69621c.bindPopup(popup_4ca9750bc22f34d7841a7447a82ad3e6)
+        ;
+
+        
+    
+    
+            var marker_309732bae68063bc386cfc6b24d44d20 = L.marker(
+                [-6.8585, 107.6001],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_6a97329ab26e9b6540230e72cdd3bc93 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eCidadap\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_309732bae68063bc386cfc6b24d44d20.setIcon(div_icon_6a97329ab26e9b6540230e72cdd3bc93);
+            
+    
+            var rectangle_8f7cee0a1eb1abebfb0edb78142c68ed = L.rectangle(
+                [[-0.004, -0.004], [0.004, 0.004]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_e88c2aea1f4143dcdb8d58645941e09c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e0639878b6596f69150d888014963616 = $(`<div id="html_e0639878b6596f69150d888014963616" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Cijawura<br>             <b>Prediksi:</b> Sedang<br>             <b>Curah Hujan:</b> 209.39 mm<br>             <b>Jumlah Banjir:</b> 4.21             </div>`)[0];
+                popup_e88c2aea1f4143dcdb8d58645941e09c.setContent(html_e0639878b6596f69150d888014963616);
+            
+        
+
+        rectangle_8f7cee0a1eb1abebfb0edb78142c68ed.bindPopup(popup_e88c2aea1f4143dcdb8d58645941e09c)
+        ;
+
+        
+    
+    
+            var marker_5e0813e9b81db4fbd63e5430caf55b07 = L.marker(
+                [0.0, 0.0],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_747b513d3e33b23f63ddabedf85565be = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eCijawura\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_5e0813e9b81db4fbd63e5430caf55b07.setIcon(div_icon_747b513d3e33b23f63ddabedf85565be);
+            
+    
+            var rectangle_a0863a78da8461cbb03000312e3be2de = L.rectangle(
+                [[-0.004, -0.004], [0.004, 0.004]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_f586670ce7834664e6957061595c71bb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c3f3e637d3761dec2eb1ebff71d6b7d8 = $(`<div id="html_c3f3e637d3761dec2eb1ebff71d6b7d8" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Cileunyi<br>             <b>Prediksi:</b> Sedang<br>             <b>Curah Hujan:</b> 379.3 mm<br>             <b>Jumlah Banjir:</b> 4.98             </div>`)[0];
+                popup_f586670ce7834664e6957061595c71bb.setContent(html_c3f3e637d3761dec2eb1ebff71d6b7d8);
+            
+        
+
+        rectangle_a0863a78da8461cbb03000312e3be2de.bindPopup(popup_f586670ce7834664e6957061595c71bb)
+        ;
+
+        
+    
+    
+            var marker_a2ce6825c8c13a5d61ccaa4abd5d919c = L.marker(
+                [0.0, 0.0],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_c66cfd16660561fa8222d9d8d150f2b0 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eCileunyi\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_a2ce6825c8c13a5d61ccaa4abd5d919c.setIcon(div_icon_c66cfd16660561fa8222d9d8d150f2b0);
+            
+    
+            var rectangle_75e29a50b7e83b0fd9a06b2781f70c9e = L.rectangle(
+                [[-6.903099999999999, 107.69669999999999], [-6.8951, 107.7047]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_9fe697fbdab8784f04f64b5cbab5327b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f831d7ffa3a2da1d18fd13bdd51dda4a = $(`<div id="html_f831d7ffa3a2da1d18fd13bdd51dda4a" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Cinambo<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 334.52 mm<br>             <b>Jumlah Banjir:</b> 2.15             </div>`)[0];
+                popup_9fe697fbdab8784f04f64b5cbab5327b.setContent(html_f831d7ffa3a2da1d18fd13bdd51dda4a);
+            
+        
+
+        rectangle_75e29a50b7e83b0fd9a06b2781f70c9e.bindPopup(popup_9fe697fbdab8784f04f64b5cbab5327b)
+        ;
+
+        
+    
+    
+            var marker_79af94be9bd8c2995d69b0bfd99738e7 = L.marker(
+                [-6.8991, 107.7007],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_075f1f20ed76dfe946ead09dec849f11 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eCinambo\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_79af94be9bd8c2995d69b0bfd99738e7.setIcon(div_icon_075f1f20ed76dfe946ead09dec849f11);
+            
+    
+            var rectangle_e7fdf251f788d9f4312e1deabf95050e = L.rectangle(
+                [[-6.886699999999999, 107.6069], [-6.8787, 107.6149]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_38e45c66d64720f98a97795d5fa64097 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_004e50a90d12743789b7105b5f76d5e7 = $(`<div id="html_004e50a90d12743789b7105b5f76d5e7" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Coblong<br>             <b>Prediksi:</b> Sedang<br>             <b>Curah Hujan:</b> 327.18 mm<br>             <b>Jumlah Banjir:</b> 1.6             </div>`)[0];
+                popup_38e45c66d64720f98a97795d5fa64097.setContent(html_004e50a90d12743789b7105b5f76d5e7);
+            
+        
+
+        rectangle_e7fdf251f788d9f4312e1deabf95050e.bindPopup(popup_38e45c66d64720f98a97795d5fa64097)
+        ;
+
+        
+    
+    
+            var marker_b3b5436edc5535712b40b935b25664bd = L.marker(
+                [-6.8827, 107.6109],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_6b72c35e05e94590ac6ba478252e2919 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eCoblong\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_b3b5436edc5535712b40b935b25664bd.setIcon(div_icon_6b72c35e05e94590ac6ba478252e2919);
+            
+    
+            var rectangle_ce46fe79cb64cc52ea153d62ff535289 = L.rectangle(
+                [[-6.9643, 107.7072], [-6.956300000000001, 107.71520000000001]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_7e47104e26e2d5ebb6482ec7c8afdb7b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_37803bdd3b10a59d87bf005d515f5221 = $(`<div id="html_37803bdd3b10a59d87bf005d515f5221" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Gedebage<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 260.78 mm<br>             <b>Jumlah Banjir:</b> 4.53             </div>`)[0];
+                popup_7e47104e26e2d5ebb6482ec7c8afdb7b.setContent(html_37803bdd3b10a59d87bf005d515f5221);
+            
+        
+
+        rectangle_ce46fe79cb64cc52ea153d62ff535289.bindPopup(popup_7e47104e26e2d5ebb6482ec7c8afdb7b)
+        ;
+
+        
+    
+    
+            var marker_de08f95e20c90a6f9b5a2d91f29e2ed6 = L.marker(
+                [-6.9603, 107.7112],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_018fc568cac3f13efda1feabb148fb4c = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eGedebage\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_de08f95e20c90a6f9b5a2d91f29e2ed6.setIcon(div_icon_018fc568cac3f13efda1feabb148fb4c);
+            
+    
+            var rectangle_906c16f3af25a123667559931dff011d = L.rectangle(
+                [[-6.933, 107.65169999999999], [-6.925000000000001, 107.6597]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_e95257649b9c3df0503b6134a34d1485 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_46d3105604b8ead2823d57d034c8d062 = $(`<div id="html_46d3105604b8ead2823d57d034c8d062" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Kiaracondong<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 386.19 mm<br>             <b>Jumlah Banjir:</b> 0.96             </div>`)[0];
+                popup_e95257649b9c3df0503b6134a34d1485.setContent(html_46d3105604b8ead2823d57d034c8d062);
+            
+        
+
+        rectangle_906c16f3af25a123667559931dff011d.bindPopup(popup_e95257649b9c3df0503b6134a34d1485)
+        ;
+
+        
+    
+    
+            var marker_642868046729c1b229a134526bd93084 = L.marker(
+                [-6.929, 107.6557],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_3687b47ea2f7acfb084fd229fc4078eb = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eKiaracondong\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_642868046729c1b229a134526bd93084.setIcon(div_icon_3687b47ea2f7acfb084fd229fc4078eb);
+            
+    
+            var rectangle_31fcd5195de5f20b2b986418b059483b = L.rectangle(
+                [[-6.9300999999999995, 107.6188], [-6.9221, 107.6268]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_f1f648f599059805c393d889042511c2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_355919a533e8599556cf831bb2936769 = $(`<div id="html_355919a533e8599556cf831bb2936769" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Lengkong<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 242.06 mm<br>             <b>Jumlah Banjir:</b> 3.08             </div>`)[0];
+                popup_f1f648f599059805c393d889042511c2.setContent(html_355919a533e8599556cf831bb2936769);
+            
+        
+
+        rectangle_31fcd5195de5f20b2b986418b059483b.bindPopup(popup_f1f648f599059805c393d889042511c2)
+        ;
+
+        
+    
+    
+            var marker_2fe66187cfbeb5dd418c3cc9e56f117b = L.marker(
+                [-6.9261, 107.6228],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_330ad532899bc31a0fe1349439cb6d0c = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eLengkong\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_2fe66187cfbeb5dd418c3cc9e56f117b.setIcon(div_icon_330ad532899bc31a0fe1349439cb6d0c);
+            
+    
+            var rectangle_3cfa49fd252f83c8ff18653d9dce753a = L.rectangle(
+                [[-0.004, -0.004], [0.004, 0.004]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_aac4685bd829ac20cb9e41d21e6dbd2c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_96cfb09173dd9dd5835894d25742dcd8 = $(`<div id="html_96cfb09173dd9dd5835894d25742dcd8" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Mandalajati<br>             <b>Prediksi:</b> Tinggi<br>             <b>Curah Hujan:</b> 247.48 mm<br>             <b>Jumlah Banjir:</b> 2.03             </div>`)[0];
+                popup_aac4685bd829ac20cb9e41d21e6dbd2c.setContent(html_96cfb09173dd9dd5835894d25742dcd8);
+            
+        
+
+        rectangle_3cfa49fd252f83c8ff18653d9dce753a.bindPopup(popup_aac4685bd829ac20cb9e41d21e6dbd2c)
+        ;
+
+        
+    
+    
+            var marker_fc27897c1b91b38b6a3fed8fb59ed88f = L.marker(
+                [0.0, 0.0],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_6ba6a6956f2887b95bcc1f8df139d113 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eMandalajati\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_fc27897c1b91b38b6a3fed8fb59ed88f.setIcon(div_icon_6ba6a6956f2887b95bcc1f8df139d113);
+            
+    
+            var rectangle_96cc0310da2765f8c358f99ab9dd957b = L.rectangle(
+                [[-6.9087, 107.70859999999999], [-6.9007000000000005, 107.7166]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_c225c7921198a7ced47b6ec2140a01b8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b061c69cab04778c6c2c9f9fbc3efb01 = $(`<div id="html_b061c69cab04778c6c2c9f9fbc3efb01" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Panyileukan<br>             <b>Prediksi:</b> Sedang<br>             <b>Curah Hujan:</b> 315.18 mm<br>             <b>Jumlah Banjir:</b> 0.21             </div>`)[0];
+                popup_c225c7921198a7ced47b6ec2140a01b8.setContent(html_b061c69cab04778c6c2c9f9fbc3efb01);
+            
+        
+
+        rectangle_96cc0310da2765f8c358f99ab9dd957b.bindPopup(popup_c225c7921198a7ced47b6ec2140a01b8)
+        ;
+
+        
+    
+    
+            var marker_afdf62378efd21773f85df9e2d6cc69d = L.marker(
+                [-6.9047, 107.7126],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_af30884f4d636e99f764b424296da1a0 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003ePanyileukan\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_afdf62378efd21773f85df9e2d6cc69d.setIcon(div_icon_af30884f4d636e99f764b424296da1a0);
+            
+    
+            var rectangle_e7f63ddb3a2814ed7ad3e687df9a7136 = L.rectangle(
+                [[-6.9582, 107.69099999999999], [-6.950200000000001, 107.699]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_e1dee4384bbea9fe72dc596fa74f9d5a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7edd50d09db6cae38ca39dfd497ed5c7 = $(`<div id="html_7edd50d09db6cae38ca39dfd497ed5c7" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Rancasari<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 271.57 mm<br>             <b>Jumlah Banjir:</b> 1.74             </div>`)[0];
+                popup_e1dee4384bbea9fe72dc596fa74f9d5a.setContent(html_7edd50d09db6cae38ca39dfd497ed5c7);
+            
+        
+
+        rectangle_e7f63ddb3a2814ed7ad3e687df9a7136.bindPopup(popup_e1dee4384bbea9fe72dc596fa74f9d5a)
+        ;
+
+        
+    
+    
+            var marker_42abbacbf6998a696f506713d0ee62f7 = L.marker(
+                [-6.9542, 107.695],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_5427bce18a5209166b3f98740b80c683 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eRancasari\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_42abbacbf6998a696f506713d0ee62f7.setIcon(div_icon_5427bce18a5209166b3f98740b80c683);
+            
+    
+            var rectangle_ac94876c18ef7f6ef0a29558f3d1d065 = L.rectangle(
+                [[-6.9475999999999996, 107.6105], [-6.9396, 107.61850000000001]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_7960d0e420e016a4ee7b8a69174ff92e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_adabc8d545437d21efdf252aef2b92c7 = $(`<div id="html_adabc8d545437d21efdf252aef2b92c7" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Regol<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 261.87 mm<br>             <b>Jumlah Banjir:</b> 1.33             </div>`)[0];
+                popup_7960d0e420e016a4ee7b8a69174ff92e.setContent(html_adabc8d545437d21efdf252aef2b92c7);
+            
+        
+
+        rectangle_ac94876c18ef7f6ef0a29558f3d1d065.bindPopup(popup_7960d0e420e016a4ee7b8a69174ff92e)
+        ;
+
+        
+    
+    
+            var marker_1a3ec896d81f41372c278c653728afbc = L.marker(
+                [-6.9436, 107.6145],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_1c53744ad78a9f21ced0acfe1c384598 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eRegol\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_1a3ec896d81f41372c278c653728afbc.setIcon(div_icon_1c53744ad78a9f21ced0acfe1c384598);
+            
+    
+            var rectangle_c6a2fe99e56a8b56d7d519c5142733bc = L.rectangle(
+                [[-6.886399999999999, 107.5731], [-6.8784, 107.5811]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_a3d5b2135049ad0bd90cd318adb3852f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9681f4472d54bcc8d05a09d9a0c41053 = $(`<div id="html_9681f4472d54bcc8d05a09d9a0c41053" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Sukajadi<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 361.31 mm<br>             <b>Jumlah Banjir:</b> 3.43             </div>`)[0];
+                popup_a3d5b2135049ad0bd90cd318adb3852f.setContent(html_9681f4472d54bcc8d05a09d9a0c41053);
+            
+        
+
+        rectangle_c6a2fe99e56a8b56d7d519c5142733bc.bindPopup(popup_a3d5b2135049ad0bd90cd318adb3852f)
+        ;
+
+        
+    
+    
+            var marker_e69a31dbc69dc7d2e77b2bc7b9185851 = L.marker(
+                [-6.8824, 107.5771],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_ba3abf9f1a203820d7a4bc30837b19db = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eSukajadi\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_e69a31dbc69dc7d2e77b2bc7b9185851.setIcon(div_icon_ba3abf9f1a203820d7a4bc30837b19db);
+            
+    
+            var rectangle_43093ced7c6c52f29186ed9da8ecac28 = L.rectangle(
+                [[-6.8712, 107.5774], [-6.863200000000001, 107.5854]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_1a97be655fec0061b5bd91107e7a7940 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7b560a90c91317d554ad50afd2136eed = $(`<div id="html_7b560a90c91317d554ad50afd2136eed" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Sukasari<br>             <b>Prediksi:</b> Sedang<br>             <b>Curah Hujan:</b> 362.74 mm<br>             <b>Jumlah Banjir:</b> 4.74             </div>`)[0];
+                popup_1a97be655fec0061b5bd91107e7a7940.setContent(html_7b560a90c91317d554ad50afd2136eed);
+            
+        
+
+        rectangle_43093ced7c6c52f29186ed9da8ecac28.bindPopup(popup_1a97be655fec0061b5bd91107e7a7940)
+        ;
+
+        
+    
+    
+            var marker_d2ccc35fbb75006c55a7c8490c9af8f0 = L.marker(
+                [-6.8672, 107.5814],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_90babc06fa8083970865b3b0a9fce406 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eSukasari\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_d2ccc35fbb75006c55a7c8490c9af8f0.setIcon(div_icon_90babc06fa8083970865b3b0a9fce406);
+            
+    
+            var rectangle_83ac77060bca00c4e6ce98bd06a73ac5 = L.rectangle(
+                [[-6.921099999999999, 107.6051], [-6.9131, 107.6131]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_27e40a8915d30fc70e925c2f2ac89113 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8e12917af053e7fad1c61aac61b52135 = $(`<div id="html_8e12917af053e7fad1c61aac61b52135" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Sumur Bandung<br>             <b>Prediksi:</b> Rendah<br>             <b>Curah Hujan:</b> 406.13 mm<br>             <b>Jumlah Banjir:</b> 1.34             </div>`)[0];
+                popup_27e40a8915d30fc70e925c2f2ac89113.setContent(html_8e12917af053e7fad1c61aac61b52135);
+            
+        
+
+        rectangle_83ac77060bca00c4e6ce98bd06a73ac5.bindPopup(popup_27e40a8915d30fc70e925c2f2ac89113)
+        ;
+
+        
+    
+    
+            var marker_085ae9f34ce707185c517601ec78549f = L.marker(
+                [-6.9171, 107.6091],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_76ee9bfd64881df78bb9558f066a5635 = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eSumur Bandung\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_085ae9f34ce707185c517601ec78549f.setIcon(div_icon_76ee9bfd64881df78bb9558f066a5635);
+            
+    
+            var rectangle_3896ad86ac40a48c3e9a74e29e745c70 = L.rectangle(
+                [[-6.890599999999999, 107.7071], [-6.8826, 107.7151]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+        var popup_976fe6771b2c2830dc374c1f4db44a30 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d773e1a0c7a484e32f0e846775f91fee = $(`<div id="html_d773e1a0c7a484e32f0e846775f91fee" style="width: 100.0%; height: 100.0%;">             <b>Kecamatan:</b> Ujungberung<br>             <b>Prediksi:</b> Sedang<br>             <b>Curah Hujan:</b> 304.43 mm<br>             <b>Jumlah Banjir:</b> 4.06             </div>`)[0];
+                popup_976fe6771b2c2830dc374c1f4db44a30.setContent(html_d773e1a0c7a484e32f0e846775f91fee);
+            
+        
+
+        rectangle_3896ad86ac40a48c3e9a74e29e745c70.bindPopup(popup_976fe6771b2c2830dc374c1f4db44a30)
+        ;
+
+        
+    
+    
+            var marker_7c2a86642999ee7eaa9b8ae50c063308 = L.marker(
+                [-6.8866, 107.7111],
+                {
+}
+            ).addTo(map_48c4bf12a4ca8c4e432f966bee907e8f);
+        
+    
+            var div_icon_199d0983d3fb2d9ab0edf2cd523f7cfa = L.divIcon({
+  "html": "\n            \u003cdiv style=\u0027font-size:10pt; color:black; text-shadow: 1px 1px 2px white;\u0027\u003e\n                \u003cb\u003eUjungberung\u003c/b\u003e\n            \u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_7c2a86642999ee7eaa9b8ae50c063308.setIcon(div_icon_199d0983d3fb2d9ab0edf2cd523f7cfa);
+            
+</script>
+</html>
